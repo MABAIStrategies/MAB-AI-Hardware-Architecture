@@ -787,6 +787,72 @@
       to { transform: rotate(360deg); }
     }
 
+
+    /* ---------- Small screens (phones, 640px and below) ---------- */
+    @media (max-width: 640px) {
+      body { padding: 12px; }
+
+      /* Utility bar + header: stack and let content wrap */
+      .top-utility-bar { flex-direction: column; align-items: stretch; padding: 8px 12px; }
+      .top-utility-bar > div { flex-wrap: wrap; }
+      .top-utility-bar > div .btn-action { flex: 1 1 auto; justify-content: center; }
+      header { flex-direction: column; align-items: stretch; gap: 12px; }
+      header h1 { font-size: 22px; line-height: 1.25; overflow-wrap: anywhere; }
+      .controls-group { justify-content: space-between; }
+      .toggle-wrapper { flex: 1 1 auto; }
+      .toggle-btn { flex: 1 1 0; justify-content: center; }
+
+      /* Model selector: one control per row, full width */
+      .model-selector-bar { flex-direction: column; align-items: stretch; padding: 12px; gap: 12px; }
+      .model-search-box { max-width: none; }
+      .search-input { font-size: 16px; } /* 16px stops iOS zooming on focus */
+      .model-dropdown-group { flex-direction: column; align-items: stretch; gap: 6px; }
+      .model-select { width: 100%; font-size: 16px; }
+      .model-actions { flex-wrap: wrap; }
+      .model-actions .btn-action { flex: 1 1 auto; justify-content: center; }
+
+      /* View nav: tabs scroll sideways in one row; legend wraps under them */
+      .view-nav { flex-direction: column; align-items: stretch; }
+      .nav-tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+      .nav-tabs::-webkit-scrollbar { display: none; }
+      .tab-btn { flex: 0 0 auto; white-space: nowrap; padding: 10px 14px; }
+      .legend { flex-wrap: wrap; gap: 8px 14px; font-size: 11px; }
+
+      /* Main layout: 3D stage, then BOM, then stats */
+      .app-container { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+      .diagram-panel { padding: 12px; min-height: 0; border-radius: 12px; }
+
+      /* 3D stage: shorter viewport, scaled-down chassis, toolbar stacks */
+      .viewport-3d-toolbar { flex-direction: column; align-items: stretch; padding: 10px; }
+      .toolbar-group { justify-content: center; }
+      .btn-3d-ctrl, .btn-preset-pill { min-height: 36px; padding: 6px 10px; font-size: 11px; }
+      .device-3d-viewport { height: 420px; touch-action: pan-y; } /* sideways drag spins, vertical swipe scrolls */
+      .device-3d-stage { scale: 0.72; } /* separate from transform, so the JS rotation is kept */
+      .lab-pedestal { width: 340px; height: 340px; transform: rotateX(90deg) translateZ(-170px); }
+      .drag-hint-pill { font-size: 10px; max-width: calc(100% - 24px); text-align: center; }
+
+      /* BOM / procurement panels: one card per row */
+      .procurement-hub-panel { margin-top: 16px; }
+      .procurement-card { padding: 14px; }
+      .procurement-header { flex-direction: column; gap: 10px; }
+      .procurement-actions { width: 100%; }
+      .procurement-actions .btn-procure { flex: 1 1 auto; justify-content: center; }
+      .procurement-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+      .procurement-item-card { padding: 14px; }
+      .proc-btn { gap: 8px; min-height: 44px; }
+      .proc-btn-title { min-width: 0; overflow-wrap: anywhere; }
+
+      /* Stats sidebar */
+      .stat-card, .procurement-sidebar-card { padding: 14px; }
+      .spec-row { gap: 12px; }
+      .spec-val { overflow-wrap: anywhere; }
+
+      /* Modal: nearly full screen */
+      .modal-overlay { padding: 8px; align-items: flex-end; }
+      .modal-box { border-radius: 14px; }
+      .modal-header { padding: 16px; }
+      .modal-body { padding: 16px; max-height: 78vh; }
+    }
   </style>
 </head>
 <body>
